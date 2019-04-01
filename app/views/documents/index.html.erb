@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Documents</h1>
+
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Purchaser name</th>
+        <th scope="col">Item description</th>
+        <th scope="col">Item price</th>
+        <th scope="col">Purchase count</th>
+        <th scope="col">Merchant address</th>
+        <th scope="col">Merchant name</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% total_order = 0.0 %>
+      <% @documents.each do |document| %>
+        <tr>
+          <td><%= document.purchaser_name %></td>
+          <td><%= document.item_description %></td>
+          <td><%= document.item_price %></td>
+          <td><%= document.purchase_count %></td>
+          <td><%= document.merchant_address %></td>
+          <td><%= document.merchant_name %></td>
+          <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% total_order = total_order + (document.item_price * document.purchase_count) %>
+      <% end %>
+      </tr>
+        <td colspan="7">
+          <h3>Total order: <%= total_order %></h3>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <hr>
+
+  <div>
+    <h3>Import a CSV File</h3>
+    <%= form_tag import_documents_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import CSV", :class => "btn btn-primary"%>
+    <% end %>
+  </div>
+</div>
