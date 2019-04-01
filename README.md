@@ -2,7 +2,7 @@
 Desafio de programação 1
 
 ## Para configurar o banco de dados
-rake db:create
+rake db:create  
 rake db:migrate
 
 ## Para subir o servidor
