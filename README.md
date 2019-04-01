@@ -8,8 +8,8 @@ rake db:migrate
 ## Para subir o servidor
 rails s
 
-## Para executar os tests
+## Para executar os testes
 rspec
 
-## Cobertura dos tests
+## Cobertura dos testes
 /coverage/index.html
